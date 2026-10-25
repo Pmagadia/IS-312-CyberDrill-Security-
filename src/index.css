@@ -1,0 +1,62 @@
+/* Global styles. Shared colors live in :root so every module can use them. */
+:root {
+  --bg: #f7f8fa;
+  --surface: #ffffff;
+  --text: #1b1f24;
+  --muted: #5b6470;
+  --accent: #0b6bcb;
+  --border: #d9dee5;
+  --good: #1a7f37;
+  --bad: #c62828;
+  --radius: 8px;
+  font-family: system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+  line-height: 1.5;
+  color: var(--text);
+  background: var(--bg);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #12161b;
+    --surface: #1b2129;
+    --text: #e8ecf1;
+    --muted: #a3adb9;
+    --accent: #5aa9f2;
+    --border: #2f3843;
+  }
+}
+
+* { box-sizing: border-box; }
+body { margin: 0; }
+a { color: var(--accent); }
+
+.app { min-height: 100vh; display: flex; flex-direction: column; }
+
+.site-header {
+  display: flex; flex-wrap: wrap; align-items: center; gap: 12px 24px;
+  padding: 12px 16px; background: var(--surface); border-bottom: 1px solid var(--border);
+}
+.brand { font-weight: 700; font-size: 1.25rem; text-decoration: none; color: var(--text); }
+.nav-list { display: flex; flex-wrap: wrap; gap: 4px 16px; list-style: none; margin: 0; padding: 0; }
+.nav-list a { text-decoration: none; color: var(--muted); }
+.nav-list a.active { color: var(--accent); font-weight: 600; }
+
+.content { flex: 1; width: 100%; max-width: 1000px; margin: 0 auto; padding: 24px 16px; }
+.lead { color: var(--muted); font-size: 1.1rem; }
+.placeholder { color: var(--muted); font-style: italic; }
+
+.card-grid {
+  list-style: none; padding: 0; margin: 24px 0 0;
+  display: grid; gap: 16px; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+}
+.card { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 16px; }
+.card h2 { font-size: 1.1rem; margin: 0 0 8px; }
+.card p { margin: 0; color: var(--muted); }
+
+.score-list { list-style: none; padding: 0; max-width: 520px; }
+.score-list li {
+  display: flex; justify-content: space-between; gap: 16px;
+  padding: 12px 0; border-bottom: 1px solid var(--border);
+}
+
+.site-footer { padding: 16px; text-align: center; color: var(--muted); font-size: 0.85rem; }
