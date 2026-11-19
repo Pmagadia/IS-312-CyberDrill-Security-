@@ -1,3 +1,4 @@
+
 /* Global styles. Shared colors live in :root so every module can use them. */
 :root {
   --bg: #f7f8fa;
@@ -15,21 +16,8 @@
   background: var(--bg);
 }
 
-/* Original automatic dark mode settings
-@media (prefers-color-scheme: dark) {
-  :root {
-    --bg: #12161b;
-    --surface: #1b2129;
-    --text: #e8ecf1;
-    --muted: #a3adb9;
-    --accent: #5aa9f2;
-    --border: #2f3843;
-  }
-}
-*/
-
-/* Dark mode colors */
-.app[data-theme="dark"]{
+/* Dark mode controlled by the App Shell */
+.app[data-theme="dark"] {
   --bg: #12161b;
   --surface: #1b2129;
   --text: #e8ecf1;
@@ -42,36 +30,114 @@
 body { margin: 0; }
 a { color: var(--accent); }
 
-.app { min-height: 100vh; display: flex; flex-direction: column; }
+.app {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background: var(--bg);
+  color: var(--text);
+}
 
 .site-header {
-  display: flex; flex-wrap: wrap; align-items: center; gap: 12px 24px;
-  padding: 12px 16px; background: var(--surface); border-bottom: 1px solid var(--border);
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 12px 24px;
+  padding: 12px 16px;
+  background: var(--surface);
+  border-bottom: 1px solid var(--border);
 }
-.brand { font-weight: 700; font-size: 1.25rem; text-decoration: none; color: var(--text); }
-.nav-list { display: flex; flex-wrap: wrap; gap: 4px 16px; list-style: none; margin: 0; padding: 0; }
-.nav-list a { text-decoration: none; color: var(--muted); }
-.nav-list a.active { color: var(--accent); font-weight: 600; }
 
-.content { flex: 1; width: 100%; max-width: 1000px; margin: 0 auto; padding: 24px 16px; }
-.lead { color: var(--muted); font-size: 1.1rem; }
-.placeholder { color: var(--muted); font-style: italic; }
+.brand {
+  font-weight: 700;
+  font-size: 1.25rem;
+  text-decoration: none;
+  color: var(--text);
+}
+
+.nav-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px 16px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.nav-list a {
+  text-decoration: none;
+  color: var(--muted);
+}
+
+.nav-list a.active {
+  color: var(--accent);
+  font-weight: 600;
+}
+
+.content {
+  flex: 1;
+  width: 100%;
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 24px 16px;
+}
+
+.lead {
+  color: var(--muted);
+  font-size: 1.1rem;
+}
+
+.placeholder {
+  color: var(--muted);
+  font-style: italic;
+}
 
 .card-grid {
-  list-style: none; padding: 0; margin: 24px 0 0;
-  display: grid; gap: 16px; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  list-style: none;
+  padding: 0;
+  margin: 24px 0 0;
+  display: grid;
+  gap: 16px;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
 }
-.card { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 16px; }
-.card h2 { font-size: 1.1rem; margin: 0 0 8px; }
-.card p { margin: 0; color: var(--muted); }
 
-.score-list { list-style: none; padding: 0; max-width: 520px; }
+.card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 16px;
+}
+
+.card h2 {
+  font-size: 1.1rem;
+  margin: 0 0 8px;
+}
+
+.card p {
+  margin: 0;
+  color: var(--muted);
+}
+
+.score-list {
+  list-style: none;
+  padding: 0;
+  max-width: 520px;
+}
+
 .score-list li {
-  display: flex; justify-content: space-between; gap: 16px;
-  padding: 12px 0; border-bottom: 1px solid var(--border);
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 12px 0;
+  border-bottom: 1px solid var(--border);
 }
 
-.site-footer { padding: 16px; text-align: center; color: var(--muted); font-size: 0.85rem; }
+.site-footer {
+  padding: 16px;
+  text-align: center;
+  color: var(--muted);
+  font-size: 0.85rem;
+}
 
 /* Mobile navigation */
 .menu-toggle {
@@ -85,6 +151,17 @@ a { color: var(--accent); }
   padding: 4px 12px;
 }
 
+/* Theme toggle button */
+.theme-toggle {
+  background: var(--surface);
+  color: var(--text);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 8px 12px;
+  cursor: pointer;
+}
+
+/* Mobile layout */
 @media (max-width: 768px) {
   .site-header {
     justify-content: space-between;
@@ -109,241 +186,10 @@ a { color: var(--accent); }
     padding: 12px 0;
   }
 }
-/* Theme toggle button */
-.theme-toggle {
-  background: var(--surface);
-  color: var(--text);
-  border: 1px solid var(--border);
-  border-radius: var(--radius);
-  padding: 8px 12px;
-  cursor: pointer;
-}
-
-/* Apply theme colors to the application */
-.app {
-  background: var(--bg);
-  color: var(--text);
-}
 
 /* Tablet layout */
 @media (min-width: 601px) and (max-width: 900px) {
   .card-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
-}
-
-/* Displays five port boxes per row on desktop. */
-.port-grid {
-  display: grid;
-  grid-template-columns: repeat(5, minmax(0, 1fr));
-  gap: 12px;
-  width: 100%;
-}
-
-/* Displays two port boxes per row on smaller screens. */
-@media (max-width: 600px) {
-  .port-grid {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
-}
-
-
-/* Displays five protocol boxes per row. */
-.protocol-grid {
-  display: grid;
-  grid-template-columns: repeat(5, minmax(0, 1fr));
-  gap: 12px;
-  margin-bottom: 20px;
-}
-
-/* Makes the draggable boxes fill their grid spaces. */
-.protocol-grid > div {
-  margin: 0 !important;
-  box-sizing: border-box;
-  text-align: center;
-}
-
-/* Uses two columns on smaller screens. */
-@media (max-width: 600px) {
-  .protocol-grid {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
-}
-
-/* Progress dashboard */
-.progress-section {
-  margin-top: 24px;
-  padding: 20px;
-  background-color: #1b222c;
-  border: 1px solid #374151;
-  border-radius: 12px;
-}
-
-/* Progress heading */
-.progress-heading {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  gap: 12px;
-}
-
-.progress-heading h2 {
-  margin: 0;
-  font-size: 22px;
-}
-
-.progress-heading span {
-  color: #cbd5e1;
-  font-size: 14px;
-}
-
-/* Progress bar */
-.progress-bar {
-  display: block;
-  width: 100%;
-  height: 12px;
-  margin: 18px 0;
-  accent-color: #3b82f6;
-}
-
-/* Four statistics in one row */
-.progress-stats {
-  display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
-  gap: 12px;
-}
-
-/* Individual statistic boxes */
-.stat-box {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 8px;
-  padding: 18px 10px;
-  background-color: #283341;
-  border-radius: 8px;
-  text-align: center;
-}
-
-.stat-box strong {
-  color: #ffffff;
-  font-size: 28px;
-}
-
-.stat-box span {
-  color: #cbd5e1;
-  font-size: 14px;
-}
-
-/* Mobile layout */
-@media (max-width: 600px) {
-  .progress-stats {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
-
-  .progress-section {
-    padding: 14px;
-  }
-
-  .progress-heading h2 {
-    font-size: 18px;
-  }
-}
-
-/* Makes the game fit better on one screen. */
-.protocol-grid {
-  gap: 8px;
-  margin-bottom: 10px;
-}
-
-.protocol-grid > div {
-  padding: 10px 8px !important;
-  margin: 0 !important;
-}
-
-/* Makes the port boxes shorter. */
-.port-grid {
-  gap: 8px;
-}
-
-.port-grid > div {
-  min-height: 65px !important;
-  padding: 8px !important;
-}
-
-.port-grid p {
-  margin: 4px 0 0;
-}
-
-/* Reduces the space around headings. */
-.page h1 {
-  margin: 0 0 8px;
-}
-
-.page h2 {
-  margin: 12px 0 8px;
-}
-
-/* Makes the progress dashboard smaller. */
-.progress-section {
-  margin-top: 12px;
-  padding: 12px 16px;
-}
-
-.progress-heading h2 {
-  margin: 0;
-}
-
-.progress-bar {
-  margin: 10px 0;
-  height: 8px;
-}
-
-.progress-stats {
-  gap: 8px;
-}
-
-.stat-box {
-  padding: 10px 8px;
-  gap: 4px;
-}
-
-.stat-box strong {
-  font-size: 22px;
-}
-
-.stat-box span {
-  font-size: 12px;
-}
-
-/* Keeps the restart button compact. */
-.page button {
-  font-size: 14px;
-}
-/* Compact protocol boxes on mobile screens. */
-@media (max-width: 600px) {
-  .protocol-grid > div {
-    flex-direction: row !important;
-    justify-content: space-between !important;
-    padding: 8px !important;
-    gap: 6px !important;
-    min-height: 48px;
-  }
-
-  .protocol-grid button {
-    padding: 5px 8px !important;
-    font-size: 12px !important;
-    flex-shrink: 0;
-  }
-
-  .protocol-grid strong {
-    font-size: 12px;
-    line-height: 1.2;
-  }
-
-  .protocol-grid,
-  .port-grid {
-    gap: 6px;
   }
 }

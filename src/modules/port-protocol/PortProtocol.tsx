@@ -1,10 +1,22 @@
-import { useState } from "react";
+
+import { useState, useEffect, useRef } from "react";
 import { DndContext, type DragEndEvent } from "@dnd-kit/core";
-import { portData } from "./portData";
-import { checkMatch, hasReachedAttemptLimit, calculateScore, calculateAccuracy } from "./matchingLogic";
 import { motion } from "framer-motion";
+import "./PortProtocol.css";
+
+import { portData } from "./portData";
+import {
+  checkMatch,
+  hasReachedAttemptLimit,
+  calculateScore,
+  calculateAccuracy,
+} from "./matchingLogic";
+
 import DraggableProtocol from "./DraggableProtocol";
 import DroppablePort from "./DroppablePort";
+
+// Shared scoring system used by the dashboard.
+import { saveScore } from "../../shared/scoring";
 
 // Shuffles items into a random order.
 function shuffleItems<T>(items: T[]): T[] {
@@ -46,19 +58,34 @@ export default function PortProtocol() {
     shuffleItems(questions)
   );
 
+  // Prevents the same completed game from being saved twice.
+  const scoreSaved = useRef(false);
+
   // Calculates progress and scores.
   const completed = matched.length + revealed.length;
   const missed = revealed.length;
 
   // Calculates the final score using our tested function.
   const score = calculateScore(correctAnswers, questions.length);
-  
+
   // Calculates accuracy using our tested function.
   const accuracy = calculateAccuracy(correctAnswers, totalAttempts);
+
+  // Saves the final score once all 10 questions are completed.
+  useEffect(() => {
+    if (completed === questions.length && !scoreSaved.current) {
+      scoreSaved.current = true;
+
+      saveScore("port-protocol", correctAnswers, 10);
+    }
+  }, [completed, questions.length, correctAnswers]);
 
   // Starts a new game.
   function restartGame() {
     const newQuestions = shuffleItems(portData).slice(0, 10);
+
+    // Allows the next completed game to save a new score.
+    scoreSaved.current = false;
 
     setQuestions(newQuestions);
     setShuffledPorts(shuffleItems(newQuestions));
@@ -179,12 +206,13 @@ export default function PortProtocol() {
   }
 
   return (
-    <section className="page">
+    <section className="page port-protocol-page">
       <h1>Port &amp; Protocol Match</h1>
 
       <p>
-         Match each protocol to its correct port. Drag and drop, or select a 
-         protocol and then choose a port. You have three attempts per protocol. 
+        Match each protocol to its correct port. Drag and drop, or
+        select a protocol and then choose a port. You have three
+        attempts per protocol.
       </p>
 
       <DndContext onDragEnd={handleDragEnd}>

@@ -8,7 +8,7 @@
     "allowImportingTsExtensions": false,
     "esModuleInterop": true,
     "noEmit": false,
-    "types": ["vite/client", "jest", "node", "@testing-library/jest-dom"]
+    "types": ["jest", "node", "@testing-library/jest-dom", "vite/client"]
   },
   "include": ["src"]
 }

@@ -24,7 +24,16 @@ export default function DroppablePort({
       ? "#1b4332"
       : isOver
         ? "#b3e5fc"
-        : "transparent";
+        : "var(--surface)";
+
+  // Use theme text color for unmatched ports.
+  // Keep white text on completed matches.
+  const textColor =
+    matchedProtocol
+      ? "#ffffff"
+      : isOver
+        ? "#111111"
+        : "var(--text)";
 
   return (
     <motion.div
@@ -47,16 +56,16 @@ export default function DroppablePort({
           ? { scale: [1, 1.06, 1] }
           : { scale: 1 }
       }
-      transition={{ 
+      transition={{
         duration: 0.8,
         ease: "easeInOut",
       }}
       style={{
         padding: "10px",
-        border: "1px solid gray",
+        border: "1px solid var(--border)",
         borderRadius: "8px",
         backgroundColor,
-        color: isOver && !matchedProtocol ? "#111" : "white",
+        color: textColor,
         textAlign: "center",
         minHeight: "65px",
         cursor: onSelect ? "pointer" : "default",
