@@ -55,11 +55,21 @@ export default function App() {
           <ul className="nav-list">
             {MODULES.map((m) => (
               <li key={m.id}>
-                <NavLink to={m.path}>{m.name}</NavLink>
+                <NavLink 
+                  to={m.path}
+                  onClick={() => setMenuOpen (false)}
+                >
+                  {m.name}
+                </NavLink>
               </li>
             ))}
             <li>
-              <NavLink to="/dashboard">Dashboard</NavLink>
+              <NavLink 
+                to="/dashboard"
+                onClick={() => setMenuOpen(false)}
+              >
+                Dashboard
+              </NavLink>
             </li>
           </ul>
         </nav>

@@ -1,0 +1,205 @@
+
+/* Port & Protocol Match module styles */
+
+/* Module headings */
+.port-protocol-page h1 {
+  margin: 0 0 8px;
+}
+
+.port-protocol-page h2 {
+  margin: 12px 0 8px;
+}
+
+/* Protocol boxes */
+.port-protocol-page .protocol-grid {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 8px;
+  margin-bottom: 10px;
+}
+
+.port-protocol-page .protocol-grid > div {
+  padding: 10px 8px !important;
+  margin: 0 !important;
+  box-sizing: border-box;
+  text-align: center;
+}
+
+/* Port boxes */
+.port-protocol-page .port-grid {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 8px;
+  width: 100%;
+}
+
+.port-protocol-page .port-grid > div {
+  min-height: 65px !important;
+  padding: 8px !important;
+}
+
+.port-protocol-page .port-grid p {
+  margin: 4px 0 0;
+}
+
+/* Progress dashboard */
+.port-protocol-page .progress-section {
+  margin-top: 12px;
+  padding: 12px 16px;
+  background-color: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+}
+
+.port-protocol-page .progress-heading {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+}
+
+.port-protocol-page .progress-heading h2 {
+  margin: 0;
+  font-size: 22px;
+}
+
+.port-protocol-page .progress-heading span {
+  color: var(--muted);
+  font-size: 14px;
+}
+
+.port-protocol-page .progress-bar {
+  display: block;
+  width: 100%;
+  height: 8px;
+  margin: 10px 0;
+  accent-color: #3b82f6;
+}
+
+.port-protocol-page .progress-stats {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 8px;
+}
+
+.port-protocol-page .stat-box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  padding: 10px 8px;
+  background-color: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  text-align: center;
+}
+
+.port-protocol-page .stat-box strong {
+  color: var(--text);
+  font-size: 22px;
+}
+
+.port-protocol-page .stat-box span {
+  color: var(--muted);
+  font-size: 12px;
+}
+
+/* Restart button */
+.port-protocol-page > button {
+  font-size: 14px;
+}
+
+/* Mobile layout */
+@media (max-width: 600px) {
+  /* Compact headings and instructions */
+  .port-protocol-page h1 {
+    font-size: 24px;
+    margin-bottom: 6px;
+  }
+
+  .port-protocol-page h2 {
+    font-size: 18px;
+    margin: 8px 0 6px;
+  }
+
+  .port-protocol-page > p {
+    font-size: 12px;
+    line-height: 1.35;
+    margin: 6px 0;
+  }
+
+  /* Two-column protocol grid */
+  .port-protocol-page .protocol-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 4px;
+    margin-bottom: 6px;
+  }
+
+  .port-protocol-page .protocol-grid > div {
+    flex-direction: row !important;
+    justify-content: space-between !important;
+    padding: 4px !important;
+    gap: 4px !important;
+    min-height: 36px;
+  }
+
+  .port-protocol-page .protocol-grid strong {
+    font-size: 11px;
+    line-height: 1.2;
+  }
+
+  .port-protocol-page .protocol-grid button {
+    padding: 3px 5px !important;
+    font-size: 10px !important;
+    flex-shrink: 0;
+  }
+
+  /* Two-column port grid */
+  .port-protocol-page .port-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 4px;
+  }
+
+  .port-protocol-page .port-grid > div {
+    min-height: 42px !important;
+    padding: 5px !important;
+  }
+
+  /* Compact progress dashboard */
+  .port-protocol-page .progress-section {
+    margin-top: 8px;
+    padding: 8px;
+  }
+
+  .port-protocol-page .progress-heading h2 {
+    font-size: 16px;
+    margin: 0;
+  }
+
+  .port-protocol-page .progress-heading span {
+    font-size: 12px;
+  }
+
+  .port-protocol-page .progress-bar {
+    margin: 6px 0;
+    height: 6px;
+  }
+
+  .port-protocol-page .progress-stats {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 8px;
+  }
+
+  .port-protocol-page .stat-box {
+    padding: 6px 4px;
+  }
+
+  .port-protocol-page .stat-box strong {
+    font-size: 18px;
+  }
+
+  .port-protocol-page .stat-box span {
+    font-size: 11px;
+  }
+}
